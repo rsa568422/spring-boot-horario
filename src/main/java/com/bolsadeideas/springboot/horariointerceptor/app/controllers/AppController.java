@@ -9,6 +9,9 @@ public class AppController {
 
 	@GetMapping({"", "/", "/index", "/index/"})
 	public String index(Model model) {
+		
+		model.addAttribute("titulo", "Bienvenido al horario de atención a clientes");
+		
 		return "index";
 	}
 	
