@@ -8,12 +8,12 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class MvcConfig implements WebMvcConfigurer {
+public class MvcConfig implements WebMvcConfigurer{
 
 	@Autowired
 	@Qualifier("horario")
 	private HandlerInterceptor horario;
-
+	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(horario).excludePathPatterns("/cerrado");

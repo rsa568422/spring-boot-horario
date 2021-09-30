@@ -10,31 +10,27 @@ public class AppController {
 
 	@Value("${config.horario.apertura}")
 	private Integer apertura;
-
+	
 	@Value("${config.horario.cierre}")
 	private Integer cierre;
-
-	@GetMapping({ "", "/", "/index", "/index/" })
+	
+	@GetMapping({"/", "/index"})
 	public String index(Model model) {
-
 		model.addAttribute("titulo", "Bienvenido al horario de atención a clientes");
-
 		return "index";
 	}
-
+	
 	@GetMapping("/cerrado")
 	public String cerrado(Model model) {
-
+		
 		StringBuilder mensaje = new StringBuilder("Cerrado, por favor visítenos desde las ");
-		mensaje.append(this.apertura);
+		mensaje.append(apertura);
 		mensaje.append(" y las ");
-		mensaje.append(this.cierre);
+		mensaje.append(cierre);
 		mensaje.append(" hrs. Gracias.");
-
+		
 		model.addAttribute("titulo", "Fuera del horario de atención");
-		model.addAttribute("mensaje", mensaje.toString());
-
+		model.addAttribute("mensaje", mensaje);
 		return "cerrado";
 	}
-
 }
